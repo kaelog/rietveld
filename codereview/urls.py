@@ -16,6 +16,15 @@
 
 # NOTE: Must import *, since Django looks for things here, e.g. handler500.
 from django.conf.urls.defaults import *
+from codereview import feeds
+
+feeds = {
+    'reviews': feeds.ReviewsFeed,
+    'closed': feeds.ClosedFeed,
+    'mine' : feeds.MineFeed,
+    'all': feeds.AllFeed,
+    'issue' : feeds.OneIssueFeed,
+}
 
 urlpatterns = patterns(
     'codereview.views',
@@ -58,4 +67,10 @@ urlpatterns = patterns(
     (r'^branch_delete/(\d+)$', 'branch_delete'),
     (r'^settings$', 'settings'),
     (r'^user_popup/(.+)$', 'user_popup'),
+    )
+
+urlpatterns += patterns(
+    '' ,
+    (r'^rss/(?P<url>.*)$', 'django.contrib.syndication.views.feed',
+	        {'feed_dict': feeds}),
     )
