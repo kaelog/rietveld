@@ -17,8 +17,10 @@
   <link rel="icon" href="/favicon.ico" />
   <link type="text/css" rel="stylesheet" href="/static/styles.css" />
   <script type="text/javascript" src="/static/script.js"></script>
+  <script src="/static/gears_init.js"></script>
+  <script src="/static/offline.js"></script>
 </head>
-<body>
+<body onload="init()">
 
 <!-- Begin help window -->
 <script type="text/javascript"><!--
@@ -132,6 +134,8 @@ var publish_link = "{%url codereview.views.publish issue.key.id%}";
 <a class="novisit" target="_blank" href="/_ah/admin">Admin</a>
 |
 {%endif%}
+<img src="./static/offline.gif" alt="Go to offline" onclick="go_offline()" id="offline_image" />
+|
 <a class="novisit" target="_blank"
    href="http://code.google.com/p/rietveld/wiki/CodeReviewHelp">Help</a>
 |
@@ -161,6 +165,8 @@ var publish_link = "{%url codereview.views.publish issue.key.id%}";
 <div class="mainmenu2">
   {%block mainmenu2%}{%endblock%}
 </div>
+
+<div class="mainmenu2" id="message" style="display:none;">&nbsp;</div>
 
 <div>
 {%block body%}BODY GOES HERE{%endblock%}

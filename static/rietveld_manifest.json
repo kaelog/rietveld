@@ -1,0 +1,25 @@
+{
+  "betaManifestVersion": 1,
+  "version": "1.0",
+  "entries": [
+      { "url": "/static/offline.js" },
+      { "url": "/static/gears_init.js"},
+      { "url": "/static/blank.jpg" },
+      { "url": "/static/closedtriangle.gif" },
+      { "url": "/static/disconnected.gif" },
+      { "url": "/static/favicon.ico" },
+      { "url": "/static/gears_init.js" },
+      { "url": "/static/offline.gif" },
+      { "url": "/static/offline.js" },
+      { "url": "/static/opentriangle.gif" },
+      { "url": "/static/robots.txt" },
+      { "url": "/static/rss.gif" },
+      { "url": "/static/script.js" },
+      { "url": "/static/star-dark.gif" },
+      { "url": "/static/star-lite.gif" },
+      { "url": "/static/styles.css" },
+      { "url": "/static/syncing.gif" },
+      { "url": "/static/upload.py" },
+      { "url": "/static/zippyplus.gif" }
+    ]
+}
