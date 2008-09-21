@@ -2069,3 +2069,13 @@ def _user_popup(request):
     # Use time expired cache because the number of issues will change over time
     memcache.add('user_popup:' + user.email(), popup_html, 60)
   return popup_html
+
+OFFLINE_LIMIT = 100
+
+@login_required
+def user_offline_list(request):
+  query = models.Issue.gql('ORDER BY modified DESC')
+  issues = query.fetch(OFFLINE_LIMIT)
+  response = respond(request,'offline_list.html', {'issues': issues} )
+  response.mimetype = 'application/json'
+  return response

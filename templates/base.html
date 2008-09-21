@@ -134,8 +134,12 @@ var publish_link = "{%url codereview.views.publish issue.key.id%}";
 <a class="novisit" target="_blank" href="/_ah/admin">Admin</a>
 |
 {%endif%}
-<img src="./static/offline.gif" alt="Go to offline" onclick="go_offline()" id="offline_image" />
+<img src="./static/offline.gif" alt="Go to offline" onclick="go_offline();" id="offline_image" />
+{%if is_dev%}
 |
+<img src="./static/disconnected.gif" alt="Go to offline" onclick="removeStore();" id="offline_image" />
+|
+{%endif%}
 <a class="novisit" target="_blank"
    href="http://code.google.com/p/rietveld/wiki/CodeReviewHelp">Help</a>
 |

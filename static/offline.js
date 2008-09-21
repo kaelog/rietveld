@@ -32,7 +32,7 @@ var user_store_NAME = "rietveld_user_store";
 // Change this to set the URL of tha manifest file, which describe which
 // URLs to capture. It can be relative to the current page, or an
 // absolute URL.
-var MANIFEST_FILENAME = "./static/rietveld_manifest.json";
+var MANIFEST_FILENAME = "/static/rietveld_manifest.json";
 
 var localServer;
 var static_store;
@@ -96,7 +96,7 @@ function go_offline() {
     textout("You must install Gears first.");
     return;
   }
-  createstatic_store() ;
+  createStore() ;
   
   document.getElementById("offline_image").src="/static/syncing.gif" ;
 }
@@ -108,10 +108,17 @@ function textout(msg) {
 }
 
 function captureUserStore() {
-  urls = [ "/1" , "/113" ] ;
-  alert(urls) ;
-  
+  url = "/offline/list" ;
+  var request = google.gears.factory.create('beta.httprequest');
+  request.open('GET', url);
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+	  var jsonObject = eval('(' + request.responseText + ')');
+      textout(jsonObject.urls[0]);
+    }
+  };
+  request.send();
   image = document.getElementById("offline_image") ;
-  image.onclick = removestatic_store ;
+  image.onclick = removeStore ;
   image.src="/static/disconnected.gif" ;
 }

@@ -1,0 +1,7 @@
+{
+  "urls": [
+			{%for issue in issues %}
+			{ "url": "{%url codereview.views.show issue.key.id%}" },
+			{%endfor%}
+    ]
+}
