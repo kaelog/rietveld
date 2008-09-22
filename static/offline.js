@@ -114,8 +114,11 @@ function captureUserStore() {
   request.onreadystatechange = function() {
     if (request.readyState == 4) {
 	  var jsonObject = eval('(' + request.responseText + ')');
-      textout(jsonObject.urls[0]);
+	    var urls = new Array(length(jsonObject.urls)) ;
+	    for(i = 0 ; i < length(urls) ; i++)
+        urls[i] = jsonObject.urls[i].url;
     }
+    textout(urls) ;
   };
   request.send();
   image = document.getElementById("offline_image") ;

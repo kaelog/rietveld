@@ -2,6 +2,9 @@
   "urls": [
 			{%for issue in issues %}
 			{ "url": "{%url codereview.views.show issue.key.id%}" },
+			{%for patch in issue.patchset_set %}
+			{ "url": "{%url codereview.views.download issue.key.id patch.key.id%}" },
+			{%endfor%}
 			{%endfor%}
     ]
 }
